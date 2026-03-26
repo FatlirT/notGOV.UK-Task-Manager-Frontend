@@ -1,4 +1,10 @@
-export default function Header() {
+import { ReactNode } from "react";
+
+type HeaderProps = {
+  children?: ReactNode; // children is optional
+};
+
+export default function Header({ children }: HeaderProps) {
   return (
     <header className="govuk-header" data-module="govuk-header">
       <div className="govuk-header__container govuk-width-container">
@@ -15,27 +21,8 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Navigation */}
-        <div className="govuk-header__content">
-          <nav className="govuk-header__navigation" aria-label="Menu">
-            <ul
-              id="navigation"
-              className="govuk-header__navigation-list flex gap-6 ml-6"
-            >
-              <li className="govuk-header__navigation-item">
-                <a className="govuk-header__link" href="/tasks">
-                  Tasks list
-                </a>
-              </li>
-
-              <li className="govuk-header__navigation-item">
-                <a className="govuk-header__link" href="/tasks/new">
-                  Create task
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        {/* Render any child elements passed to this header */}
+        {children}
       </div>
     </header>
   );
