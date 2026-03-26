@@ -1,5 +1,5 @@
 import { apiUrl } from "../../env";
-import { Task } from "../../schema/tasks/task";
+import { Task } from "../schema/task";
 
 export default async function createTask(task: Task) {
   let res: Response;

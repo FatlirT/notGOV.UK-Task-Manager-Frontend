@@ -4,9 +4,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TaskFormSchema, TaskFormValues } from "../../schema/tasks/taskForm";
-import { Task } from "../../schema/tasks/task";
-import ErrorSummary, { ErrorItem } from "../ErrorSummary";
+import { TaskFormSchema, TaskFormValues } from "../schema/taskForm";
+import { Task } from "../schema/task";
+import ErrorSummary, { ErrorItem } from "../../components/ErrorSummary";
 
 type Props = {
   liftTaskCreated: (task: Task) => void;

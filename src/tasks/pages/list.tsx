@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import TaskFilterDialogBox from "../../components/tasks/TaskOptionDialogBox";
-import TaskTable from "../../components/tasks/TaskTable";
-import getTasksWithOptions from "../../api/tasks/getTasksWithOptions";
-import updateTaskComplete from "../../api/tasks/updateTaskComplete";
-import TaskOptionsSummary from "../../components/tasks/TaskOptionsSummary";
+import TaskFilterDialogBox from "../components/TaskOptionDialogBox";
+import TaskTable from "../components/TaskTable";
+import getTasksWithOptions from "../api/getTasksWithOptions";
+import updateTaskComplete from "../api/updateTaskComplete";
+import TaskOptionsSummary from "../components/TaskOptionsSummary";
+import TasksLayout from "../layout";
 
 interface TaskListProps {
   pageSize?: number;
@@ -62,7 +63,7 @@ export default function TaskList({ pageSize = 10 }: TaskListProps) {
   };
 
   return (
-    <div className="govuk-width-container w-full">
+    <TasksLayout>
       <div className="mb-6 flex w-full items-end justify-between">
         <div>
           <h1 className="govuk-heading-l govuk-!-margin-bottom-1">Tasks</h1>
@@ -119,6 +120,6 @@ export default function TaskList({ pageSize = 10 }: TaskListProps) {
           onClose={() => setShowFilterDialog(false)}
         />
       )}
-    </div>
+    </TasksLayout>
   );
 }

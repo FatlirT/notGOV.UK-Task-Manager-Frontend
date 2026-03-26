@@ -1,5 +1,5 @@
-import timeDelta from "../../utils/timeDelta";
-import toTitleCase from "../../utils/toTitleCase";
+import timeDelta from "../utils/timeDelta";
+import toTitleCase from "../utils/toTitleCase";
 import { useNavigate } from "react-router-dom";
 
 type TaskTableProps = {

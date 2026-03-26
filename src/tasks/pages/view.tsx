@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import getTask from "../../api/tasks/getTask";
-import updateTask from "../../api/tasks/updateTask";
-import { Task } from "../../schema/tasks/task";
-import TaskForm from "../../components/tasks/TaskForm";
-import TaskInformationSummary from "../../components/tasks/TaskInformationSummary";
-import { ta } from "zod/locales";
+import getTask from "../api/getTask";
+import updateTask from "../api/updateTask";
+import { Task } from "../schema/task";
+import TaskForm from "../components/TaskForm";
+import TaskInformationSummary from "../components/TaskInformationSummary";
+import TasksLayout from "../layout";
 
 export default function TaskView() {
   const { title } = useParams<{ title: string }>();
@@ -52,7 +52,7 @@ export default function TaskView() {
   };
 
   return (
-    <div className="govuk-width-container w-full text-center">
+    <TasksLayout>
       <div className="w-full text-left">
         {!isEditing && (
           <Link to="/tasks" className="govuk-back-link">
@@ -123,6 +123,6 @@ export default function TaskView() {
           </div>
         )}
       </main>
-    </div>
+    </TasksLayout>
   );
 }

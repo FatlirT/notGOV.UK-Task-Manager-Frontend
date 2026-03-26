@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createTask } from "../api/createTask";
+import createTask from "../api/createTask";
 
 const TaskForm = ({ liftTaskCreated }: any) => {
   const fields = [
@@ -11,7 +11,7 @@ const TaskForm = ({ liftTaskCreated }: any) => {
     "due_time",
   ];
   const [formData, setFormData] = useState<Record<string, string>>(
-    Object.fromEntries(fields.map((field) => [field, ""]))
+    Object.fromEntries(fields.map((field) => [field, ""])),
   );
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -31,12 +31,12 @@ const TaskForm = ({ liftTaskCreated }: any) => {
 
     try {
       const due_datetime = new Date(
-        `${formData.due_date}T${formData.due_time}`
+        `${formData.due_date}T${formData.due_time}`,
       ).toISOString();
       const { due_date, due_time, ...rest } = formData;
       const payload = { ...rest, due_datetime, status: "pending" };
 
-      const response = await createTask(payload);
+      const response = await createTask(payload as any);
       liftTaskCreated(response);
 
       // clear form after success
