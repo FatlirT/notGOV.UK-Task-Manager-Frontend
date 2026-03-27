@@ -1,12 +1,16 @@
 // Sign-In Page.tsx
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../layout";
+import { useAuth } from "../../context/AuthContext";
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +22,13 @@ const SignInPage = () => {
     }
 
     // Replace this with real sign-in API call
-    console.log("Signing in with:", { email, password });
+    const user_data = { email: email, first_name: "sadsa", last_name: "" }; // Mock user data returned from API
+    if (user_data) {
+      login(user_data);
+      navigate("/");
+    } else {
+      setError("Invalid email or password");
+    }
   };
 
   return (
